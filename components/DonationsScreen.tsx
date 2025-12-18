@@ -122,6 +122,15 @@ export default function DonationsScreen() {
 
   function disableDonations() {
     setDonationsEnabled(false);
+
+    setPhoneDigits("");
+    setPhoneLocked(false);
+    setPhoneError(false);
+
+    setCardDigits("");
+    setCardState("empty");
+    setCardError(false);
+
     setConfirmOpen(false);
   }
 
@@ -291,9 +300,10 @@ export default function DonationsScreen() {
                           height={13}
                         />
                       </span>
-                      <span className="text-sm">
-                        Прием денег на любую карту РФ банка
-                      </span>
+                      <p className="text-sm text-[#6C7286]">
+                        Прием денег на{" "}
+                        <span className="font-bold">любую карту РФ банка</span>
+                      </p>
                       <span className="text-[#9CA3AF] bg-white rounded-full h-4 w-4 flex justify-center border border-[#E7E8EF]">
                         <Image
                           src="QuestionMark.svg"
@@ -312,9 +322,13 @@ export default function DonationsScreen() {
                           height={13}
                         />
                       </span>
-                      <span className="text-sm">
-                        Пожертвования не облагаются налогами
-                      </span>
+                      <p className="text-sm text-[#6C7286]">
+                        Пожертвования{" "}
+                        <span className="font-bold">
+                          не облагаются налогами
+                        </span>
+                      </p>
+
                       <span className="text-[#9CA3AF] bg-white rounded-full h-4 w-4 flex justify-center border border-[#E7E8EF]">
                         <Image
                           src="QuestionMark.svg"
@@ -333,7 +347,11 @@ export default function DonationsScreen() {
                           height={13}
                         />
                       </span>
-                      <span className="text-sm">Мгновенные зачисления</span>
+                      <p className="text-sm font-bold text-[#6C7286]">
+                        Мгновенные{" "}
+                        <span className="font-normal">зачисления</span>
+                      </p>
+
                       <span className="text-[#9CA3AF] bg-white rounded-full h-4 w-4 flex justify-center border border-[#E7E8EF]">
                         <Image
                           src="QuestionMark.svg"

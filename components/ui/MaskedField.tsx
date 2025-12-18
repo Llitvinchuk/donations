@@ -1,6 +1,5 @@
 "use client";
 
-import { PencilIcon, TrashIcon } from "@/components/icons";
 import Image from "next/image";
 
 type Props = {
@@ -23,6 +22,7 @@ type Props = {
 export default function MaskedField({
   label,
   hint,
+  valueDigits,
   displayValue,
   placeholder,
   locked,
@@ -32,6 +32,7 @@ export default function MaskedField({
   onEdit,
   onClear,
 }: Props) {
+  const hasValue = valueDigits.length > 0;
   return (
     <div>
       <div className="flex gap-2 items-center mb-2">
@@ -57,21 +58,24 @@ export default function MaskedField({
           className="h-10 w-full bg-transparent text-[14px] outline-none placeholder:text-xs placeholder:text-[#6C7286]"
         />
 
-        <button
-          type="button"
-          onClick={onEdit}
-          className="grid h-[24px]  w-[30px] place-items-center rounded-lg bg-[#F2F3F7]"
-        >
-          <Image src="PencilSimple.svg" alt="₽" width={14} height={14} />
-        </button>
-
-        <button
-          type="button"
-          onClick={onClear}
-          className="grid h-[24px] w-[30px] place-items-center rounded-lg bg-[#FEE2E2] text-[#EF4444]"
-        >
-          <Image src="Trash.svg" alt="₽" width={14} height={14} />
-        </button>
+        {hasValue && (
+          <button
+            type="button"
+            onClick={onEdit}
+            className="grid h-[24px]  w-[30px] place-items-center rounded-lg bg-[#F2F3F7]"
+          >
+            <Image src="PencilSimple.svg" alt="₽" width={14} height={14} />
+          </button>
+        )}
+        {hasValue && (
+          <button
+            type="button"
+            onClick={onClear}
+            className="grid h-[24px] w-[30px] place-items-center rounded-lg bg-[#FEE2E2] text-[#EF4444]"
+          >
+            <Image src="Trash.svg" alt="₽" width={14} height={14} />
+          </button>
+        )}
       </div>
 
       {hint && <div className="mt-2 text-[12px] text-[#6B7280]">{hint}</div>}
